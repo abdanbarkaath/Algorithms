@@ -45,5 +45,5 @@ someQueue.enqueue('hello');
 someQueue.enqueue('hi');
 someQueue.enqueue('here');
 console.log(someQueue);
-// someQueue.dequeue();
-// console.log(someQueue);
+someQueue.dequeue();
+console.log(someQueue);
