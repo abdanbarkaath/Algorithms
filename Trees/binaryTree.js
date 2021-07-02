@@ -70,28 +70,43 @@ class BinaryTree {
         node.left = right;
         invertTree(node.right);
         invertTree(node.left);
-        console.log(node)
+        console.log(node);
       }
     };
-    invertTree(this.root);  
-    return this.root
+    invertTree(this.root);
+    return this.root;
   }
-  remove(data){
+  remove(data) {
+    //Incomplete
+    if (!this.root) {
+      return false;
+    }
     let currentNode = this.root;
+    let parentNode = null;
     while (currentNode) {
-      if (currentNode.value === data) {
-        // let tempCurrent = currentNode;
-        if(currentNode.right){
-          currentNode = currentNode.right;
-        }else{
-          currentNode = currentNode.left;
-        }
-        return this.root;
-      }
       if (data < currentNode.value) {
+        parentNode = currentNode;
         currentNode = currentNode.left;
-      } else {
+      }
+      if (data > currentNode.value) {
+        parentNode = currentNode;
         currentNode = currentNode.right;
+      }
+      if (currentNode.value === data) {
+        if (currentNode.right === null) {
+          if (parentNode === null) {
+            this.root = currentNode.left;
+          } else if (currentNode.value < parentNode.value) {
+            parentNode.left = currentNode.left;
+          } else if (currentNode.value > parentNode.value) {
+            parentNode.right = currentNode.right;
+          }
+        } else if (currentNode.right.left === null) {
+          if (parentNode === null) {
+            this.root = currentNode.right;
+          } else if(currentNode)
+        }
+        return currentNode;
       }
     }
     return currentNode;
